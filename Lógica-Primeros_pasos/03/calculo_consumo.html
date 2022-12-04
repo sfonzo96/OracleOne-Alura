@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 07 de clase 03</title>
+</head>
+<body>
+    <h3>¿Alcohol o gasolina?</h3>
+
+    <script>
+        let tankVolume = 40, 
+        maxKmPerTankGasoline = 480, 
+        maxKmPerTankAlcohol = 300,
+        kmPerLiterGasoline = maxKmPerTankGasoline / tankVolume,
+        kmPerLiterAlcohol = maxKmPerTankAlcohol / tankVolume;
+        
+        document.write(`El consumo por km de gasolina es de ${kmPerLiterGasoline} km/litro y el de alcohol es de ${kmPerLiterAlcohol} km/litro`);
+
+    </script>
+</body>
+</html>

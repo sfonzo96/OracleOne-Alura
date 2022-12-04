@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de IMC</title>
+</head>
+<body>
+
+    <h1>Calcula tu IMC</h1>
+
+    <button id="calcularBtn">Apretá para calcular tu IMC</button>
+
+    <p class="resultContainer"></p>
+    
+    <script>
+        let calcularBtn = document.getElementById('calcularBtn');
+        let resultContainer = document.querySelector('.resultContainer');
+
+        let peso, altura;
+
+        function getData() {
+            peso = prompt('¿Cuál es tu peso?');
+            altura = prompt('¿Cuál es tu altura?');
+        }
+
+        function calcularImc(peso, altura) {
+            let imc = peso / (altura ** 2);
+            return imc;
+        }
+    
+        function showImc(data) {
+            resultContainer.textContent =`Tu IMC es de ${data}`;
+        }
+
+        calcularBtn.addEventListener('click', () => {
+            getData();
+            let imcResult = calcularImc(peso, altura);
+            showImc(imcResult);
+        });
+
+    </script>
+</body>
+</html>
