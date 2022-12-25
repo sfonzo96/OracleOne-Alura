@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input/>
+    <input/>
+
+    <script>
+
+        let numeroSecreto = parseInt(Math.random() * 10);
+
+        let numero = parseInt(prompt('Adivina el número secreto'));
+
+        let intentos = 1;
+
+        let hasGanado = true;
+
+        while (numero !== numeroSecreto) {
+
+            if (intentos === 3) {
+
+                hasGanado = false;
+
+                alert('Te quedaste sin intentos, reinicia la página para volver a jugar');
+
+                break;
+
+            }
+
+            if (numero > numeroSecreto) {
+
+                alert('El número secreto es menor');
+
+            } else {
+
+                alert('El número secreto es mayor');
+
+            }
+
+            numero = parseInt(prompt('Adivina el número secreto'));
+
+            intentos++;
+        }
+
+        if (hasGanado) alert(`Felicitaciones, adivinaste el número secreto en ${intentos} intentos`);
+
+    </script>
+</body>
+</html>

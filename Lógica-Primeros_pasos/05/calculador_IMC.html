@@ -15,8 +15,8 @@
     <p class="resultContainer"></p>
     
     <script>
-        let calcularBtn = document.getElementById('calcularBtn');
-        let resultContainer = document.querySelector('.resultContainer');
+        const calcularBtn = document.getElementById('calcularBtn');
+        const resultContainer = document.querySelector('.resultContainer');
 
         let peso, altura;
 
@@ -29,15 +29,29 @@
             let imc = peso / (altura ** 2);
             return imc;
         }
+
+        function imcStatus(result) {
+            if (result >= 30) {
+                return 'obesidad';
+            } else if (result >= 25) {
+                return 'sobrepeso';
+            } else if (result >= 18.5) {
+                return 'peso normal';
+            } else {
+                return 'bajo peso';
+            }
+        }
     
-        function showImc(data) {
-            resultContainer.textContent =`Tu IMC es de ${data}`;
+        function showImc(imc, status) {
+            resultContainer.textContent =`Tu IMC es de ${data},
+                                        tu estado es condiderado como ${status}`;
         }
 
         calcularBtn.addEventListener('click', () => {
             getData();
             let imcResult = calcularImc(peso, altura);
-            showImc(imcResult);
+            let imcStatus = imcStatus(imcResult);
+            showImc(imcResult, imcStatus);
         });
 
     </script>
