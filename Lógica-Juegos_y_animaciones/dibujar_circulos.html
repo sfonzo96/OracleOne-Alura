@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujar Círculos</title>
+</head>
+<body>
+    <canvas width="600" height="400" id="canvas"> </canvas>
+
+    <script>
+
+        let canvas = document.getElementById("canvas");
+        let brush = canvas.getContext("2d");    
+        brush.fillStyle = "black";
+        brush.fillRect(0,0,600,400); 
+
+        const colors = ["blue", "red", "green", "yellow", "orange", "purple"];
+        let colorIndex = 0;
+
+        function changeColor() {
+            colorIndex != colors.length - 1 ? colorIndex++ : colorIndex = 0;
+            return false;
+        }
+
+        canvas.oncontextmenu = changeColor;
+
+        function drawCircle(evento){
+            let x = evento.pageX - canvas.offsetLeft;
+            let y = evento.pageY - canvas.offsetTop;    
+            brush.fillStyle = colors[colorIndex];
+            brush.beginPath();
+            brush.arc(x,y,10,0,2*3.14);
+            brush.fill();
+            console.log(x + "," + y);        
+        }
+
+        canvas.onclick = drawCircle;
+
+    </script> 
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belgian Flag Mod</title>
+</head>
+<body style="display: flex; width: 100%; justify-content: center;">
+    <canvas id='canvas' width="600" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const brush = canvas.getContext('2d');
+
+        brush.fillStyle = 'yellow';
+        brush.fillRect(0,0, canvas.width, canvas.height);
+
+        brush.fillStyle = 'red';
+        brush.fillRect(0,0,200,400);
+
+        brush.fillStyle = 'black';
+        brush.fillRect(400,0,200,400);
+
+        brush.fillStyle = 'white';
+        brush.beginPath();
+        brush.moveTo(0,0);
+        brush.lineTo(300,400);
+        brush.lineTo(600,0);
+        brush.lineTo(300,200);
+        brush.lineTo(0,0);
+        brush.fill();
+    </script>
+</body>
+</html>

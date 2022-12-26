@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        let canvas = document.querySelector('canvas');
+        let brush = canvas.getContext('2d');
+
+        brush.fillStyle = 'grey';
+        brush.fillRect(0, 0, 600, 400);
+
+        const colors = ['red', 'blue', 'green'];
+
+        const sidesLength = 50;
+
+        function drawSquare(x,y, sides, color) {
+            brush.fillStyle = color;
+            brush.fillRect(x,y,sides,sides);
+            brush.fill();
+        }
+
+        drawSquare(0,0,sidesLength,colors[0]);
+        drawSquare(sidesLength, 0,sidesLength,colors[1]);
+        drawSquare(sidesLength * 2, 0,sidesLength,colors[2]);
+
+        function setColor(e) {
+            if (e.offsetX > sidesLength * 3 || e.offsetY > sidesLength) return;
+            if (e.offsetX < sidesLength) brushColor = colors[0]; 
+            else if (e.offsetX < sidesLength * 2) brushColor = colors[1]; 
+            else brushColor = colors[2];
+            }
+
+        let drawAllowed = false;
+
+        let brushColor = 'red';
+
+        function drawCircle(e) {
+            if(drawAllowed && (e.offsetX > sidesLength * 3 || e.offsetY > sidesLength)) {
+                let x = e.offsetX;
+                let y = e.offsetY;
+                brush.fillStyle = brushColor;
+                brush.beginPath();
+                brush.arc(x, y, 5, 0, 2 * 3.14);
+                brush.fill();
+            }
+        }
+
+        canvas.onmousemove = drawCircle;
+
+        function drawAllowance(e) {
+            if (e.offsetX > sidesLength * 3 || e.offsetY > sidesLength) drawAllowed = !drawAllowed; 
+        };
+        canvas.onclick = setColor;
+        canvas.onmousedown = drawAllowance;
+        canvas.onmouseup = drawAllowance;
+
+    </script>
+</body>
+</html>

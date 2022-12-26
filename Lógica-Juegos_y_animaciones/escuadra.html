@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square draw</title>
+</head>
+<body style="display: flex; width: 100%; justify-content: center;">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script> 
+        const canvas = document.getElementById("canvas");
+        const brush = canvas.getContext("2d");
+
+        brush.fillStyle = 'black';
+        brush.beginPath();
+        brush.moveTo(0,0);
+        brush.lineTo(0,500);
+        brush.lineTo(500,500);
+        brush.lineTo(0,0);
+        brush.fill();
+
+        brush.fillStyle = 'white';
+        brush.beginPath();
+        brush.moveTo(100,225);
+        brush.lineTo(100,400);
+        brush.lineTo(275,400);
+        brush.lineTo(100,225);
+        brush.fill();
+
+    </script>
+</body>
+</html>

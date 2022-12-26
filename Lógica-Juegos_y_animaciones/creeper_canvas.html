@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creeper boom</title>
+</head>
+<body style="display: flex; width: 100%; justify-content: center;">
+    <canvas id="canvas" width="350" height="300"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const brush = canvas.getContext('2d');
+
+        brush.fillStyle = '#0f800f';
+        brush.fillRect(0,0, canvas.width, canvas.height);
+
+        brush.fillStyle = '#004500'; //ojo izquierdo
+        brush.fillRect(50,55,90,90);
+
+        brush.fillStyle = '#004500'; //ojo derecho
+        brush.fillRect(210,55,90,90);
+        
+        brush.fillStyle = '#004500'; //nariz
+        brush.fillRect(140,145,70,100);
+
+        brush.fillStyle = '#004500'; //boca parte izquierda
+        brush.fillRect(100,190,40,110);
+
+        brush.fillStyle = '#004500'; //boca parte derecha
+        brush.fillRect(210,190,40,110);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooting game</title>
+</head>
+<body>
+    <canvas width="600" height="400" id="canvas"> </canvas>
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let brush = canvas.getContext("2d");        
+        brush.fillStyle = "lightgrey";
+        brush.fillRect(0,0,600,400); 
+
+        function drawCircle(x, y, radio, color){
+            brush.fillStyle = color;
+            brush.beginPath();
+            brush.arc(x, y, radio,0, 2*Math.PI);
+            brush.fill();
+        } 
+
+        function clearCanvas() {
+            brush.clearRect(0,0,600,400);
+        }
+
+        function randomCoordinate(max) {
+            let random = Math.floor(Math.random() * max);
+            return random;
+        }
+
+        function makeAim(x,y){
+            drawCircle(x, y, 30, 'red');
+            drawCircle(x, y, 20, "white");
+            drawCircle(x, y, 10, 'red');
+        }
+
+        function updateCanvas(){
+            clearCanvas();
+            randomX = randomCoordinate(600);
+            randomY = randomCoordinate(400);
+            makeAim(randomX, randomY);
+        }
+
+        function shoot (e) {
+            let x = e.offsetX;
+            let y = e.offsetY;
+            if (x > randomX - 30 && x < randomX + 30 && y > randomY - 30 && y < randomY + 30 && (x - randomX)**2 + (y - randomY)**2 < 900){
+                alert("You hit the target!");
+            } else {
+                alert("You missed the target!");
+            }
+        }
+
+        canvas.onclick = shoot;
+
+        setInterval(updateCanvas, 750);
+    </script> 
+</body>
+</html>
